@@ -6,8 +6,8 @@
 #define Max_row 300
 #define Max_col 100
 #define Max_rules 75
-#define Max_token 300
-#define Max_stack 300
+#define Max_token 999
+#define Max_stack 999
 
 /* Defining boolean */
 #define boolean unsigned char
@@ -69,9 +69,11 @@ typedef struct Stack{
 #define InfoTop(S) (S).T[(S).TOP]
 
 
-void init_table(PARSE_TABLE* M);
+void init_table(PARSE_TABLE M);
 
-void init_grammar(RULES* G);
+void init_grammar(RULES G);
+
+void init_zero_table(PARSE_TABLE M);
 
 
 /* =====================         ADT STACK         ===================== */

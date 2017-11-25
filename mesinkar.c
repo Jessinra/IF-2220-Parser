@@ -10,7 +10,18 @@ boolean EOP;    /* bisa diakses dimana saja */
 static FILE * pita;
 static int retval;
 
-void START() {
+char uncapitalize(char c)
+//mengubah huruf besar menjadi huruf kecil
+{
+  if(c >= 65 && c <= 90){
+    return(c+32);
+  }
+  else{
+    return c;
+  }
+}
+
+void START(char *filename) {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -18,7 +29,10 @@ void START() {
           Jika CC = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	pita = fopen("savegame.txt","r");
+  pita = fopen(filename,"a");
+  retval = fprintf(pita,"~");
+  fclose(pita);
+	pita = fopen(filename,"r");
 	ADV();
 }
 
@@ -32,6 +46,7 @@ void ADV() {
 
 	/* Algoritma */
 	retval = fscanf(pita,"%c",&CC);
+  CC = uncapitalize(CC);
 	EOP = (CC == MARK);
 	if (EOP) {
        fclose(pita);

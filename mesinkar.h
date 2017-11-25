@@ -6,12 +6,12 @@
 
 #include "boolean.h"
 
-#define MARK '.'
+#define MARK '~'
 /* State Mesin */
 extern char CC;
 extern boolean EOP;
 
-void START();
+void START(char *filename);
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -26,4 +26,6 @@ void ADV();
           CC mungkin = MARK
           Jika  CC = MARK maka EOP akan menyala (true) */
 
+char uncapitalize(char c);
+/*membuat semua karakter yang dibaca menjadi bukan kapital*/
 #endif

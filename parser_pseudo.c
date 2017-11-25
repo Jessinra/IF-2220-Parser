@@ -12,13 +12,12 @@ int main (void){
     TABLE table_value;
 
     /* Initialize array of input */
-    Array_token list_of_input;
-    /* initialize */
-
+    init_token("coba.pas");
+    /* list_of_input[],  baris[]  initialized */
 
     /* Initialize parse table */
     PARSE_TABLE parse_table;
-    init_table(&parse_table);
+    init_table(parse_table);
 
     /* Initialize rules */
     RULES list_of_rules;
@@ -30,23 +29,28 @@ int main (void){
     Stack_elmt stack_input, stack_output;
 
     /* Bottom of stack */
-    SState(stack_input) = 0;
+    SState(stack_input) = 1;
     SToken(stack_input) = '0';
     Push(&main_stack, stack_input);
 
-
     /* Repeat until break */
     while(1){
+        PrintStack(main_stack);printf("\n");
 
         /* Get information of current processed input , and current state */
         current_input = Token(list_of_input, current_input_index_on_list);
         current_state = SState(InfoTop(main_stack));
+
+        printf("current input %d\n",current_input);
+        printf("current state %d\n\n",current_state);
 
 
         /* Evaluate current input and current_state in table */
         /* COl (CURRENT TOKEN) SUPPOSED TO BE INT SO IT CAN BE DIRECT ACCESSED */
         row = current_state;
         col = current_input;
+
+        //printf("row : %d, col : %d\n\n", row, col);
         table_value = Parse_elmt(parse_table, row, col);
 
 
@@ -55,7 +59,7 @@ int main (void){
 
             /* preparing to push input, and new current state into stack */
             SToken(stack_input) = current_input;
-            SState(stack_input) = State(table_value);
+            SState(stack_input) = State(table_value) + 1;
 
             /* Push as one element */
             Push(&main_stack, stack_input);
@@ -72,32 +76,35 @@ int main (void){
             int RHS_length = Len(GRAMMAR(list_of_rules, State(table_value)));
             /* LHS SHOULD GET CONVERTED INTO INT ASWELL */
 
+            //printf("using LHS : %d, RHS len : %d\n\n",LHS,RHS_length);
 
             /* Popping stack (as one element) ~ */
             int j;
-            for(j = 1; j < (RHS_length); j++){
+            for(j = 1; j <= (RHS_length); j++){
                 Pop(&main_stack, &stack_output);
             }
 
             /* Get current state */
             current_state = SState(InfoTop(main_stack));
+            //printf("current state %d\n\n",current_state);printf("top stack : %d\n\n",Top(main_stack));
 
             /* Evaluate LHS and current_state in table */
             row = current_state;
             col = LHS;
             table_value = Parse_elmt(parse_table, row, col);
+            //printf("row : %d, col : %d\n\n",row,col);
 
             /* Check if evaluation failed */
             if(Act(table_value) == '0'){ // table_value.action is un-initialized
 
-                printf("Compile failed...\n");
-                /*write_error_message(); */
+                printf("Compile failed rule...\n");
+                Write_error_message(current_input, current_input_index_on_list);
                 break;
             }
 
             /* preparing to push (LHS & new state) into stack again */
             SToken(stack_input) = LHS;
-            SState(stack_input) = State(table_value);
+            SState(stack_input) = State(table_value)+ 1;
 
             /* Push to stack */
             Push(&main_stack, stack_input);
@@ -112,13 +119,18 @@ int main (void){
 
         /* Null in parse table */
         else {
-            printf("Compile failed...\n");
-            /*write_error_message(); */
+            printf("Compile failed general...\n");
+            Write_error_message(current_input, current_input_index_on_list);
             break;
         }
     }
 
     return 0;
+}
+
+void Write_error_message(Token current_input,int current_index){
+
+    printf("error occured on line %d, last token : %d, (%d)\n", baris[current_input], current_input, current_index);
 }
 
 
@@ -171,7 +183,7 @@ void PrintStack(Stack S){
     int i;
 
     for (i = Top(S); i > 0; i--){
-        printf("%d -> %d ",i, SToken(S.T[i]));
+        printf("%d -> token : %d state : %d",i, SToken(S.T[i]), SState(S.T[i]));
 
         if (i == Top(S)){
             printf("<top>");
