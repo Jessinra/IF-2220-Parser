@@ -1,93 +1,110 @@
 
 #include "parser_pseudo.h"
+#include "tabel_parser.h"
+#include "mesinkata.h"
 
 int main (void){
 
     Token current_input;
-    short current_state;
-    short current_input_index_on_list = 0;
-    short row, col;
-    Table_elmt table_value;
+    int current_state;
+    int current_input_index_on_list = 0;
+    int row, col;
+    TABLE table_value;
 
+    /* Initialize array of input */
     Array_token list_of_input;
-    /* initialize list_of_input */ /*(HAS TO BE CHANGED INTO INTEGER)*/
+    /* initialize */
 
-    Parse_table parse_table;
-    /* initialize parse_table    */
-    /* row  - > state            */
-    /* col  - > terminal $ var   */
 
-    Array_rules list_of_rules;
-    /* initialize list_of_rules */
+    /* Initialize parse table */
+    PARSE_TABLE parse_table;
+    init_table(&parse_table);
 
+    /* Initialize rules */
+    RULES list_of_rules;
+    init_grammar(&list_of_rules);
+
+    /* Initialize stack */
     Stack main_stack;
     CreateEmpty(&main_stack);
     Stack_elmt stack_input, stack_output;
 
+    /* Bottom of stack */
     SState(stack_input) = 0;
+    SToken(stack_input) = '0';
     Push(&main_stack, stack_input);
 
 
+    /* Repeat until break */
     while(1){
 
+        /* Get information of current processed input , and current state */
         current_input = Token(list_of_input, current_input_index_on_list);
         current_state = SState(InfoTop(main_stack));
 
+
+        /* Evaluate current input and current_state in table */
+        /* COl (CURRENT TOKEN) SUPPOSED TO BE INT SO IT CAN BE DIRECT ACCESSED */
         row = current_state;
         col = current_input;
-
         table_value = Parse_elmt(parse_table, row, col);
 
 
         /* Shift */
-        if(Act(table_value) == 'S'){
+        if(Act(table_value) == 's'){
 
+            /* preparing to push input, and new current state into stack */
             SToken(stack_input) = current_input;
-            Push(&main_stack, stack_input);
-
             SState(stack_input) = State(table_value);
+
+            /* Push as one element */
             Push(&main_stack, stack_input);
 
+            /* Increment list of input index */
             current_input_index_on_list += 1;   // shift to next input
         }
 
         /* Reduce using rules */
-        else if(Act(table_value) == 'R'){
+        else if(Act(table_value) == 'r'){
 
-            short LHS = Lhs(Rules(list_of_rules, State(table_value)));
-            int RHS_length = Rhs_len(Rules(list_of_rules, State(table_value)));
-            /* LHS SHOULD GET CONVERTED INTO SHORT ASWELL */
+            /* Search for lhs and rhs length in array of rules */
+            int LHS = Grm(GRAMMAR(list_of_rules, State(table_value)));
+            int RHS_length = Len(GRAMMAR(list_of_rules, State(table_value)));
+            /* LHS SHOULD GET CONVERTED INTO INT ASWELL */
 
 
-
-            /* Popping stack~ */
+            /* Popping stack (as one element) ~ */
             int j;
-            for(j = 1; j < (RHS_length * 2); j++){
+            for(j = 1; j < (RHS_length); j++){
                 Pop(&main_stack, &stack_output);
             }
 
+            /* Get current state */
             current_state = SState(InfoTop(main_stack));
 
+            /* Evaluate LHS and current_state in table */
             row = current_state;
             col = LHS;
             table_value = Parse_elmt(parse_table, row, col);
 
-            if((Act(table_value) != 'A') && (Act(table_value) != 'S') && (Act(table_value) != 'R')){
+            /* Check if evaluation failed */
+            if(Act(table_value) == '0'){ // table_value.action is un-initialized
 
                 printf("Compile failed...\n");
                 /*write_error_message(); */
                 break;
             }
 
+            /* preparing to push (LHS & new state) into stack again */
             SToken(stack_input) = LHS;
-            Push(&main_stack, stack_input);
-
             SState(stack_input) = State(table_value);
+
+            /* Push to stack */
             Push(&main_stack, stack_input);
         }
 
         /* Accept */
-        else if(Act(table_value) == 'A'){
+        else if(Act(table_value) == 'a'){
 
             printf("Compile success ! \\ (^.^)/ \n\n");
             break;
@@ -100,6 +117,8 @@ int main (void){
             break;
         }
     }
+
+    return 0;
 }
 
 
