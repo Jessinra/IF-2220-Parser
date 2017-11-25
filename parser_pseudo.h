@@ -73,7 +73,9 @@ void init_table(PARSE_TABLE M);
 
 void init_grammar(RULES G);
 
-void init_zero_table(PARSE_TABLE M);
+void Write_error_message(Token current_input,int current_index);
+
+void Print_token_list(Array_token list_of_input);
 
 
 /* =====================         ADT STACK         ===================== */

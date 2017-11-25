@@ -13,12 +13,12 @@ static int retval;
 char uncapitalize(char c)
 //mengubah huruf besar menjadi huruf kecil
 {
-  if(c >= 65 && c <= 90){
-    return(c+32);
-  }
-  else{
-    return c;
-  }
+      if(c >= 65 && c <= 90){
+            return(c+32);
+      }
+      else{
+            return c;
+      }
 }
 
 void START(char *filename) {
@@ -29,11 +29,11 @@ void START(char *filename) {
           Jika CC = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-  pita = fopen(filename,"a");
-  retval = fprintf(pita,"~");
-  fclose(pita);
-	pita = fopen(filename,"r");
-	ADV();
+    pita = fopen(filename,"a");
+    retval = fprintf(pita,"~");
+    fclose(pita);
+    pita = fopen(filename,"r");
+    ADV();
 }
 
 void ADV() {
