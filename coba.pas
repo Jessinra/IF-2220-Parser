@@ -26,4 +26,4 @@ If ((Ini*5 > 10) and (itu mod 4 <100)) then
 End.~
 ~
 ~
-~
+~~~~

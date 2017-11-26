@@ -14,7 +14,15 @@ int main (void){
     /* Initialize array of input */
     init_token("coba.pas");
     /* list_of_input[],  baris[]  initialized */
-    Print_token_list(list_of_input);
+
+
+
+
+    //Print_token_list(list_of_input);
+
+
+
+
 
     /* Initialize parse table */
     PARSE_TABLE parse_table;
@@ -184,7 +192,7 @@ void Write_error_message(Token current_input,int current_index){
 void Print_token_list(Array_token list_of_input){
 
     int i;
-    for (i = 0; i <= 100; i++){
+    for (i = 0; i <= 300; i++){
         printf("token %d : %d, at row %d\n",i,list_of_input[i],baris[i]);
     }
 }
