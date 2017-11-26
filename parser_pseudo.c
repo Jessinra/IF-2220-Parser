@@ -1,6 +1,5 @@
 
 #include "parser_pseudo.h"
-#include "tabel_parser.h"
 #include "mesinkata.h"
 
 int main (void){
@@ -18,7 +17,7 @@ int main (void){
 
 
 
-    Print_token_list(list_of_input, 100);
+    //Print_token_list(list_of_input, 100);
 
 
 

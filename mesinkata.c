@@ -714,7 +714,7 @@ int KataToIndex(Kata CKata)
 	return 79;
 	}
 
-  return 1;
+	return 1;
 }
 
 void printkata(Kata C){
@@ -735,8 +735,8 @@ void init_token(char *filename)
     while(!EndKata){
 
 
-        //printkata(CKata);
-        //printf("max index : %d, %d \n",maxindex, list_of_input[maxindex-1]);
+        printkata(CKata);
+        printf("%d \n", list_of_input[maxindex-1]);
 
 
         ADVKATA();
