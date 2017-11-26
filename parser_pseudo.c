@@ -18,7 +18,7 @@ int main (void){
 
 
 
-    //Print_token_list(list_of_input, 100);
+    Print_token_list(list_of_input, 100);
 
 
 
@@ -58,8 +58,8 @@ int main (void){
         current_input = Token(list_of_input, current_input_index_on_list);
         current_state = SState(InfoTop(main_stack));
 
-        printf("current input %d\n",current_input);
-        printf("current state %d\n\n",current_state);
+        //printf("current input %d\n",current_input);
+        //printf("current state %d\n\n",current_state);
 
 
 
