@@ -18,7 +18,7 @@ int main (void){
 
 
 
-    //Print_token_list(list_of_input);
+    //Print_token_list(list_of_input, 100);
 
 
 
@@ -31,7 +31,7 @@ int main (void){
 
     /* Initialize rules */
     RULES list_of_rules;
-    init_grammar(&list_of_rules);
+    init_grammar(list_of_rules);
 
 
     /* Initialize stack */
@@ -48,7 +48,7 @@ int main (void){
     /* Repeat until break */
     while(1){
 
-        PrintStack(main_stack);printf("\n");
+        //PrintStack(main_stack);printf("\n");
 
 
 
@@ -142,7 +142,7 @@ int main (void){
             /* Check if evaluation failed */
             if(Act(table_value) == '0'){
 
-                printf("Compile failed rule...\n");
+                printf("Compile failed...\n");
                 Write_error_message(current_input, current_input_index_on_list);
                 break;
             }
@@ -167,7 +167,7 @@ int main (void){
 
         /* Null in parse table */
         else {
-            printf("Compile failed general...\n");
+            printf("Compile failed...\n");
             Write_error_message(current_input, current_input_index_on_list);
             break;
         }
@@ -178,7 +178,7 @@ int main (void){
 
 void Write_error_message(Token current_input,int current_index){
 
-    if (current_input == 10){
+    if (current_input == 9){
 
         /* 'semicolon' is not inserted into baris[] */
         printf("error occured on line %d, current token : %d, (%d)\n", baris[current_index-1], current_input, current_index+1);
@@ -189,11 +189,11 @@ void Write_error_message(Token current_input,int current_index){
     }
 }
 
-void Print_token_list(Array_token list_of_input){
+void Print_token_list(Array_token list_of_input, int amount){
 
     int i;
-    for (i = 0; i <= 300; i++){
-        printf("token %d : %d, at row %d\n",i,list_of_input[i],baris[i]);
+    for (i = 0; i <= amount; i++){
+        printf("token %d : %d, at row %d\n",i+1,list_of_input[i],baris[i]);
     }
 }
 

@@ -3,9 +3,9 @@
 #define LR_PARSER_H
 
 /* Used constant */
-#define Max_row 300
+#define Max_row 400
 #define Max_col 100
-#define Max_rules 75
+#define Max_rules 100
 #define Max_token 999
 #define Max_stack 999
 
@@ -75,7 +75,7 @@ void init_grammar(RULES G);
 
 void Write_error_message(Token current_input,int current_index);
 
-void Print_token_list(Array_token list_of_input);
+void Print_token_list(Array_token list_of_input, int amount);
 
 
 /* =====================         ADT STACK         ===================== */
