@@ -58,8 +58,8 @@ int main (void){
         current_input = Token(list_of_input, current_input_index_on_list);
         current_state = SState(InfoTop(main_stack));
 
-        //printf("current input %d\n",current_input);
-        //printf("current state %d\n\n",current_state);
+        printf("current input %d\n",current_input);
+        printf("current state %d\n\n",current_state);
 
 
 
@@ -94,7 +94,7 @@ int main (void){
 
 
             /* Increment list of input index */
-            current_input_index_on_list += 1;   // shift to next input
+            current_input_index_on_list += 1;
         }
 
 
@@ -140,7 +140,7 @@ int main (void){
 
 
             /* Check if evaluation failed */
-            if(Act(table_value) == '0'){ // table_value.action is un-initialized
+            if(Act(table_value) == '0'){
 
                 printf("Compile failed rule...\n");
                 Write_error_message(current_input, current_input_index_on_list);

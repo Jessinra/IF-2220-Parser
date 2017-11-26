@@ -6,9 +6,9 @@
 
 boolean EndKata;
 Kata CKata;
-int list_of_input[9999];
+int list_of_input[99999];
 int maxindex = 0;
-int baris[9999];
+int baris[99999];
 int bar = 1;
 
 
@@ -168,525 +168,526 @@ int CompareKata(Kata Kata1, Kata Kata2)
 int KataToIndex(Kata CKata)
 /*mengubah Kata menajdi indeks di tabel parsing*/
 {
-    Kata integer;
-    (integer).Length = 7;
-    (integer).TabKata = " integer" ;
-    if(CompareKata(CKata,integer)){
-        return 2;
-    }
-
-    Kata real;
-    (real).Length = 4;
-    (real).TabKata = " real" ;
-    if(CompareKata(CKata,real)){
-        return 3;
-    }
-
-    Kata chars;
-    (chars).Length = 4;
-    (chars).TabKata = " char" ;
-    if(CompareKata(CKata,chars)){
-        return 4;
-    }
-
-    Kata null;
-    null.Length = 1;
-    null.TabKata = " 0" ;
-    if(CompareKata(CKata,null)){
-        return 5;
-    }
-
-    Kata begin;
-    begin.Length = 5;
-    begin.TabKata = " begin" ;
-    if(CompareKata(CKata,begin)){
-        return 6;
-    }
-
-    Kata end;
-    end.Length = 3;
-    end.TabKata = " end" ;
-    if(CompareKata(CKata,end)){
-        return 7;
-    }
-
-    Kata titik;
-    titik.Length = 1;
-    titik.TabKata = " ." ;
-    if(CompareKata(CKata,titik)){
-        return 8;
-    }
-
-    Kata program;
-    program.Length = 7;
-    program.TabKata = " program" ;
-    if(CompareKata(CKata,program)){
-        return 9;
-    }
-
-    Kata titikkoma;
-    titikkoma.Length = 1;
-    titikkoma.TabKata = " ;" ;
-    if(CompareKata(CKata,titikkoma)){
-        return 10;
-    }
-
-    Kata var;
-    var.Length = 3;
-    var.TabKata = " var" ;
-    if(CompareKata(CKata,var)){
-        return 11;
-    }
-
-    Kata titikdua;
-    titikdua.Length = 1;
-    titikdua.TabKata = " :" ;
-    if(CompareKata(CKata,titikdua)){
-        return 12;
-    }
-
-    Kata array;
-    array.Length = 5;
-    array.TabKata = " array" ;
-    if(CompareKata(CKata,array)){
-        return 13;
-    }
-
-    Kata of;
-    of.Length = 2;
-    of.TabKata = " of" ;
-    if(CompareKata(CKata,of)){
-        return 14;
-    }
-
-    Kata kukir;
-    kukir.Length = 1;
-    kukir.TabKata = " [" ;
-    if(CompareKata(CKata,kukir)){
-        return 15;
-    }
-
-    Kata doubledot;
-    doubledot.Length = 2;
-    doubledot.TabKata = " .." ;
-    if(CompareKata(CKata,doubledot)){
-        return 16;
-    }
-
-    Kata kukan;
-    kukan.Length = 1;
-    kukan.TabKata = " ]" ;
-    if(CompareKata(CKata,kukan)){
-        return 17;
-    }
-
-    Kata coma;
-    coma.Length = 1;
-    coma.TabKata = " ," ;
-    if(CompareKata(CKata,coma)){
-        return 18;
-    }
-
-    Kata input;
-    input.Length = 5;
-    input.TabKata = " input" ;
-    if(CompareKata(CKata,input)){
-        return 19;
-    }
-
-    Kata leftpar;
-    leftpar.Length = 1;
-    leftpar.TabKata = " (" ;
-    if(CompareKata(CKata,leftpar)){
-        return 20;
-    }
-
-    Kata rightpar;
-    rightpar.Length = 1;
-    rightpar.TabKata = " )" ;
-    if(CompareKata(CKata,rightpar)){
-        return 21;
-    }
-
-    Kata output;
-    output.Length = 6;
-    output.TabKata = " output" ;
-    if(CompareKata(CKata,output)){
-        return 22;
-    }
-
-    Kata ifs;
-    ifs.Length = 2;
-    ifs.TabKata = " if" ;
-    if(CompareKata(CKata,ifs)){
-        return 23;
-    }
-
-    Kata then;
-    then.Length = 4;
-    then.TabKata = " then" ;
-    if(CompareKata(CKata,then)){
-        return 24;
-    }
-
-    Kata elses;
-    elses.Length = 4;
-    elses.TabKata = " else" ;
-    if(CompareKata(CKata,elses)){
-        return 25;
-    }
-
-    Kata whiles;
-    whiles.Length = 5;
-    whiles.TabKata = " while" ;
-    if(CompareKata(CKata,whiles)){
-        return 26;
-    }
-
-    Kata does;
-    does.Length = 2;
-    does.TabKata = " do" ;
-    if(CompareKata(CKata,does)){
-        return 27;
-    }
-
-    Kata repeat;
-    repeat.Length = 6;
-    repeat.TabKata = " repeat" ;
-    if(CompareKata(CKata,repeat)){
-        return 28;
-    }
-
-    Kata until;
-    until.Length = 5;
-    until.TabKata = " until" ;
-    if(CompareKata(CKata,until)){
-        return 29;
-    }
-
-    Kata fors;
-    fors.Length = 3;
-    fors.TabKata = " for" ;
-    if(CompareKata(CKata,fors)){
-        return 30;
-    }
-
-    Kata Eq;
-    Eq.Length = 1;
-    Eq.TabKata = " =" ;
-    if(CompareKata(CKata,Eq)){
-        return 31;
-    }
-
-    Kata to;
-    to.Length = 2;
-    to.TabKata = " to" ;
-    if(CompareKata(CKata,to)){
-        return 32;
-    }
-
-    Kata downto;
-    downto.Length = 6;
-    downto.TabKata = " downto" ;
-    if(CompareKata(CKata,downto)){
-        return 33;
-    }
-
-    Kata step;
-    step.Length = 4;
-    step.TabKata = " step" ;
-    if(CompareKata(CKata,step)){
-        return 34;
-    }
-
-    Kata assign;
-    assign.Length = 2;
-    assign.TabKata = " :=" ;
-    if(CompareKata(CKata,assign)){
-        return 35;
-    }
-
-    Kata plus;
-    plus.Length = 1;
-    plus.TabKata = " +" ;
-    if(CompareKata(CKata,plus)){
-        return 36;
-    }
-
-    Kata min;
-    min.Length = 1;
-    min.TabKata = " -" ;
-    if(CompareKata(CKata,min)){
-        return 37;
-    }
-
-    Kata star;
-    star.Length = 1;
-    star.TabKata = " *" ;
-    if(CompareKata(CKata,star)){
-        return 38;
-    }
-
-    Kata divs;
-    divs.Length = 1;
-    divs.TabKata = " /" ;
-    if(CompareKata(CKata,divs)){
-        return 39;
-    }
-
-    Kata div;
-    div.Length = 3;
-    div.TabKata = " div" ;
-    if(CompareKata(CKata,div)){
-        return 40;
-    }
-
-    Kata mod;
-    mod.Length = 3;
-    mod.TabKata = " mod" ;
-    if(CompareKata(CKata,mod)){
-        return 41;
-    }
-
-    Kata less;
-    less.Length = 1;
-    less.TabKata = " <" ;
-    if(CompareKata(CKata,less)){
-        return 42;
-    }
-
-    Kata more;
-    more.Length = 1;
-    more.TabKata = " >" ;
-    if(CompareKata(CKata,more)){
-        return 43;
-    }
-
-    Kata moreEq;
-    moreEq.Length = 2;
-    moreEq.TabKata = " >=" ;
-    if(CompareKata(CKata,moreEq)){
-        return 44;
-    }
-
-    Kata lessEq;
-    lessEq.Length = 2;
-    lessEq.TabKata = " <=" ;
-    if(CompareKata(CKata,lessEq)){
-        return 45;
-    }
-
-    Kata notEq;
-    notEq.Length = 2;
-    notEq.TabKata = " <>" ;
-    if(CompareKata(CKata,notEq)){
-        return 46;
-    }
-
-    Kata dollar;
-    dollar.Length = 1;
-    dollar.TabKata = " $" ;
-    if(CompareKata(CKata,dollar)){
-        return 47;
-    }
-
-    Kata S;
-    S.Length = 1;
-    S.TabKata = " S" ;
-    if(CompareKata(CKata,S)){
-        return 48;
-    }
-
-    Kata VAR_CONST;
-    VAR_CONST.Length = 9;
-    VAR_CONST.TabKata = " VAR_CONST" ;
-    if(CompareKata(CKata,VAR_CONST)){
-        return 49;
-    }
-
-    Kata VAR;
-    VAR.Length = 3;
-    VAR.TabKata = " VAR" ;
-    if(CompareKata(CKata,VAR)){
-        return 50;
-    }
-
-    Kata CONST;
-    CONST.Length = 5;
-    CONST.TabKata = " CONST" ;
-    if(CompareKata(CKata,CONST)){
-        return 51;
-    }
-
-    Kata VAR_TYPE;
-    VAR_TYPE.Length = 8;
-    VAR_TYPE.TabKata = " VAR_TYPE" ;
-    if(CompareKata(CKata,VAR_TYPE)){
-        return 52;
-    }
-
-    Kata NUM;
-    NUM.Length = 3;
-    NUM.TabKata = " NUM" ;
-    if(CompareKata(CKata,NUM)){
-        return 53;
-    }
-
-    Kata START;
-    START.Length = 5;
-    START.TabKata = " START" ;
-    if(CompareKata(CKata,START)){
-        return 54;
-    }
-
-    Kata PROGRAM_DEFINITION;
-    PROGRAM_DEFINITION.Length = 18;
-    PROGRAM_DEFINITION.TabKata = " PROGRAM_DEFINITION" ;
-    if(CompareKata(CKata,PROGRAM_DEFINITION)){
-        return 55;
-    }
-
-    Kata DICTIONARY;
-    DICTIONARY.Length = 10;
-    DICTIONARY.TabKata = " DICTIONARY" ;
-    if(CompareKata(CKata,DICTIONARY)){
-        return 56;
-    }
-
-    Kata VAR_DECLARE;
-    VAR_DECLARE.Length = 11;
-    VAR_DECLARE.TabKata = " VAR_DECLARE" ;
-    if(CompareKata(CKata,VAR_DECLARE)){
-        return 57;
-    }
-
-    Kata ARRAY_DECLARE;
-    ARRAY_DECLARE.Length = 13;
-    ARRAY_DECLARE.TabKata = " ARRAY_DECLARE" ;
-    if(CompareKata(CKata,ARRAY_DECLARE)){
-        return 58;
-    }
-
-    Kata ARRAY_DIMENSION;
-    ARRAY_DIMENSION.Length = 15;
-    ARRAY_DIMENSION.TabKata = " ARRAY_DIMENSION" ;
-    if(CompareKata(CKata,ARRAY_DIMENSION)){
-        return 59;
-    }
-
-    Kata BLOCK;
-    BLOCK.Length = 5;
-    BLOCK.TabKata = " BLOCK" ;
-    if(CompareKata(CKata,BLOCK)){
-        return 60;
-    }
-
-    Kata ALGORITHM;
-    ALGORITHM.Length = 9;
-    ALGORITHM.TabKata = " ALGORITHM" ;
-    if(CompareKata(CKata,ALGORITHM)){
-        return 61;
-    }
-
-    Kata IO;
-    IO.Length = 2;
-    IO.TabKata = " IO" ;
-    if(CompareKata(CKata,IO)){
-        return 62;
-    }
-
-    Kata COND;
-    COND.Length = 4;
-    COND.TabKata = " COND" ;
-    if(CompareKata(CKata,COND)){
-        return 63;
-    }
-
-    Kata IF;
-    IF.Length = 2;
-    IF.TabKata = " IF" ;
-    if(CompareKata(CKata,IF)){
-        return 64;
-    }
-
-    Kata ELSE_BLOCK;
-    ELSE_BLOCK.Length = 10;
-    ELSE_BLOCK.TabKata = " ELSE_BLOCK" ;
-    if(CompareKata(CKata,ELSE_BLOCK)){
-        return 65;
-    }
-
-    Kata ELSE_IF;
-    ELSE_IF.Length = 7;
-    ELSE_IF.TabKata = " ELSE_IF" ;
-    if(CompareKata(CKata,ELSE_IF)){
-        return 66;
-    }
-
-    Kata LOOP;
-    LOOP.Length = 4;
-    LOOP.TabKata = " LOOP" ;
-    if(CompareKata(CKata,LOOP)){
-        return 67;
-    }
-
-    Kata FOR;
-    FOR.Length = 3;
-    FOR.TabKata = " FOR" ;
-    if(CompareKata(CKata,FOR)){
-        return 68;
-    }
-
-    Kata TO_DOWNTO;
-    TO_DOWNTO.Length = 9;
-    TO_DOWNTO.TabKata = " TO_DOWNTO" ;
-    if(CompareKata(CKata,TO_DOWNTO)){
-        return 69;
-    }
-
-    Kata STEP;
-    STEP.Length = 4;
-    STEP.TabKata = " STEP" ;
-    if(CompareKata(CKata,STEP)){
-        return 70;
-    }
-
-    Kata ASSIGN;
-    ASSIGN.Length = 6;
-    ASSIGN.TabKata = " ASSIGN" ;
-    if(CompareKata(CKata,ASSIGN)){
-        return 71;
-    }
-
-    Kata OP_ARITH;
-    OP_ARITH.Length = 8;
-    OP_ARITH.TabKata = " OP_ARITH" ;
-    if(CompareKata(CKata,OP_ARITH)){
-        return 72;
-    }
-
-    Kata OP_LOGIC;
-    OP_LOGIC.Length = 8;
-    OP_LOGIC.TabKata = " OP_LOGIC" ;
-    if(CompareKata(CKata,OP_LOGIC)){
-        return 73;
-    }
-
-    Kata SYM_ARITH;
-    SYM_ARITH.Length = 9;
-    SYM_ARITH.TabKata = " SYM_ARITH" ;
-    if(CompareKata(CKata,SYM_ARITH)){
-            return 74;
-    }
-
-    Kata SYM_LOGIC;
-    (SYM_LOGIC).Length = 9;
-    (SYM_LOGIC).TabKata = " SYM_LOGIC" ;
-    if(CompareKata(CKata,SYM_LOGIC)){
-            return 75;
-    }
-
-        return 1;
+
+	Kata B;
+	B.Length = 7;
+	B.TabKata = " integer";
+	if(CompareKata(CKata,B)){
+	    return 2;
+	}
+
+	Kata C;
+	C.Length = 4;
+	C.TabKata = " real";
+	if(CompareKata(CKata,C)){
+	    return 3;
+	}
+
+	Kata D;
+	D.Length = 4;
+	D.TabKata = " char";
+	if(CompareKata(CKata,D)){
+	    return 4;
+	}
+
+	Kata E;
+	E.Length = 5;
+	E.TabKata = " begin";
+	if(CompareKata(CKata,E)){
+	    return 5;
+	}
+
+	Kata F;
+	F.Length = 3;
+	F.TabKata = " end";
+	if(CompareKata(CKata,F)){
+	    return 6;
+	}
+
+	Kata G;
+	G.Length = 1;
+	G.TabKata = " .";
+	if(CompareKata(CKata,G)){
+	    return 7;
+	}
+
+	Kata H;
+	H.Length = 7;
+	H.TabKata = " program";
+	if(CompareKata(CKata,H)){
+	    return 8;
+	}
+
+	Kata I;
+	I.Length = 1;
+	I.TabKata = " ;";
+	if(CompareKata(CKata,I)){
+	    return 9;
+	}
+
+	Kata J;
+	J.Length = 3;
+	J.TabKata = " var";
+	if(CompareKata(CKata,J)){
+	    return 10;
+	}
+
+	Kata K;
+	K.Length = 1;
+	K.TabKata = " :";
+	if(CompareKata(CKata,K)){
+	    return 11;
+	}
+
+	Kata L;
+	L.Length = 1;
+	L.TabKata = " ,";
+	if(CompareKata(CKata,L)){
+	    return 12;
+	}
+
+	Kata M;
+	M.Length = 5;
+	M.TabKata = " array";
+	if(CompareKata(CKata,M)){
+	    return 13;
+	}
+
+	Kata N;
+	N.Length = 2;
+	N.TabKata = " of";
+	if(CompareKata(CKata,N)){
+	    return 14;
+	}
+
+	Kata O;
+	O.Length = 1;
+	O.TabKata = " [";
+	if(CompareKata(CKata,O)){
+	    return 15;
+	}
+
+	Kata P;
+	P.Length = 2;
+	P.TabKata = " ..";
+	if(CompareKata(CKata,P)){
+	    return 16;
+	}
+
+	Kata Q;
+	Q.Length = 1;
+	Q.TabKata = " ]";
+	if(CompareKata(CKata,Q)){
+	    return 17;
+	}
+
+	Kata R;
+	R.Length = 5;
+	R.TabKata = " input";
+	if(CompareKata(CKata,R)){
+	    return 18;
+	}
+
+	Kata S;
+	S.Length = 1;
+	S.TabKata = " (";
+	if(CompareKata(CKata,S)){
+	    return 19;
+	}
+
+	Kata T;
+	T.Length = 1;
+	T.TabKata = " )";
+	if(CompareKata(CKata,T)){
+	    return 20;
+	}
+
+	Kata U;
+	U.Length = 6;
+	U.TabKata = " output";
+	if(CompareKata(CKata,U)){
+	    return 21;
+	}
+
+	Kata V;
+	V.Length = 2;
+	V.TabKata = " if";
+	if(CompareKata(CKata,V)){
+	    return 22;
+	}
+
+	Kata W;
+	W.Length = 4;
+	W.TabKata = " then";
+	if(CompareKata(CKata,W)){
+	    return 23;
+	}
+
+	Kata X;
+	X.Length = 4;
+	X.TabKata = " else";
+	if(CompareKata(CKata,X)){
+	    return 24;
+	}
+
+	Kata Y;
+	Y.Length = 5;
+	Y.TabKata = " while";
+	if(CompareKata(CKata,Y)){
+	    return 25;
+	}
+
+	Kata Z;
+	Z.Length = 2;
+	Z.TabKata = " do";
+	if(CompareKata(CKata,Z)){
+	    return 26;
+	}
+
+	Kata AA;
+	AA.Length = 6;
+	AA.TabKata = " repeat";
+	if(CompareKata(CKata,AA)){
+	    return 27;
+	}
+
+	Kata AB;
+	AB.Length = 5;
+	AB.TabKata = " until";
+	if(CompareKata(CKata,AB)){
+	    return 28;
+	}
+
+	Kata AC;
+	AC.Length = 3;
+	AC.TabKata = " for";
+	if(CompareKata(CKata,AC)){
+	    return 29;
+	}
+
+	Kata AD;
+	AD.Length = 2;
+	AD.TabKata = " :=";
+	if(CompareKata(CKata,AD)){
+	    return 30;
+	}
+
+	Kata AE;
+	AE.Length = 2;
+	AE.TabKata = " to";
+	if(CompareKata(CKata,AE)){
+	    return 31;
+	}
+
+	Kata AF;
+	AF.Length = 6;
+	AF.TabKata = " downto";
+	if(CompareKata(CKata,AF)){
+	    return 32;
+	}
+
+	Kata AG;
+	AG.Length = 4;
+	AG.TabKata = " step";
+	if(CompareKata(CKata,AG)){
+	    return 33;
+	}
+
+	Kata AH;
+	AH.Length = 1;
+	AH.TabKata = " +";
+	if(CompareKata(CKata,AH)){
+	    return 34;
+	}
+
+	Kata AI;
+	AI.Length = 1;
+	AI.TabKata = " -";
+	if(CompareKata(CKata,AI)){
+	    return 35;
+	}
+
+	Kata AJ;
+	AJ.Length = 1;
+	AJ.TabKata = " *";
+	if(CompareKata(CKata,AJ)){
+	    return 36;
+	}
+
+	Kata AK;
+	AK.Length = 1;
+	AK.TabKata = " /";
+	if(CompareKata(CKata,AK)){
+	    return 37;
+	}
+
+	Kata AL;
+	AL.Length = 3;
+	AL.TabKata = " div";
+	if(CompareKata(CKata,AL)){
+	    return 38;
+	}
+
+	Kata AM;
+	AM.Length = 3;
+	AM.TabKata = " mod";
+	if(CompareKata(CKata,AM)){
+	    return 39;
+	}
+
+	Kata AN;
+	AN.Length = 1;
+	AN.TabKata = " <";
+	if(CompareKata(CKata,AN)){
+	    return 40;
+	}
+
+	Kata AO;
+	AO.Length = 1;
+	AO.TabKata = " >";
+	if(CompareKata(CKata,AO)){
+	    return 41;
+	}
+
+	Kata AP;
+	AP.Length = 2;
+	AP.TabKata = " >=";
+	if(CompareKata(CKata,AP)){
+	    return 42;
+	}
+
+	Kata AQ;
+	AQ.Length = 2;
+	AQ.TabKata = " <=";
+	if(CompareKata(CKata,AQ)){
+	    return 43;
+	}
+
+	Kata AR;
+	AR.Length = 1;
+	AR.TabKata = " =";
+	if(CompareKata(CKata,AR)){
+	    return 44;
+	}
+
+	Kata AS;
+	AS.Length = 2;
+	AS.TabKata = " <>";
+	if(CompareKata(CKata,AS)){
+	    return 45;
+	}
+
+	Kata AT;
+	AT.Length = 1;
+	AT.TabKata = " $";
+	if(CompareKata(CKata,AT)){
+	    return 46;
+	}
+
+	Kata AU;
+	AU.Length = 1;
+	AU.TabKata = " S";
+	if(CompareKata(CKata,AU)){
+	    return 47;
+	}
+
+	Kata AV;
+	AV.Length = 9;
+	AV.TabKata = " VAR_CONST";
+	if(CompareKata(CKata,AV)){
+	    return 48;
+	}
+
+	Kata AW;
+	AW.Length = 3;
+	AW.TabKata = " VAR";
+	if(CompareKata(CKata,AW)){
+	    return 49;
+	}
+
+	Kata AX;
+	AX.Length = 5;
+	AX.TabKata = " CONST";
+	if(CompareKata(CKata,AX)){
+	    return 50;
+	}
+
+	Kata AY;
+	AY.Length = 8;
+	AY.TabKata = " VAR_TYPE";
+	if(CompareKata(CKata,AY)){
+	    return 51;
+	}
+
+	Kata AZ;
+	AZ.Length = 3;
+	AZ.TabKata = " NUM";
+	if(CompareKata(CKata,AZ)){
+	    return 52;
+	}
+
+	Kata BA;
+	BA.Length = 5;
+	BA.TabKata = " START";
+	if(CompareKata(CKata,BA)){
+	    return 53;
+	}
+
+	Kata BB;
+	BB.Length = 18;
+	BB.TabKata = " PROGRAM_DEFINITION";
+	if(CompareKata(CKata,BB)){
+	    return 54;
+	}
+
+	Kata BC;
+	BC.Length = 10;
+	BC.TabKata = " DICTIONARY";
+	if(CompareKata(CKata,BC)){
+	    return 55;
+	}
+
+	Kata BD;
+	BD.Length = 11;
+	BD.TabKata = " VAR_DECLARE";
+	if(CompareKata(CKata,BD)){
+	    return 56;
+	}
+
+	Kata BE;
+	BE.Length = 8;
+	BE.TabKata = " VAR_INIT";
+	if(CompareKata(CKata,BE)){
+	    return 57;
+	}
+
+	Kata BF;
+	BF.Length = 13;
+	BF.TabKata = " ARRAY_DECLARE";
+	if(CompareKata(CKata,BF)){
+	    return 58;
+	}
+
+	Kata BG;
+	BG.Length = 15;
+	BG.TabKata = " ARRAY_DIMENSION";
+	if(CompareKata(CKata,BG)){
+	    return 59;
+	}
+
+	Kata BH;
+	BH.Length = 5;
+	BH.TabKata = " BLOCK";
+	if(CompareKata(CKata,BH)){
+	    return 60;
+	}
+
+	Kata BI;
+	BI.Length = 6;
+	BI.TabKata = " BLOCKS";
+	if(CompareKata(CKata,BI)){
+	    return 61;
+	}
+
+	Kata BJ;
+	BJ.Length = 9;
+	BJ.TabKata = " ALGORITHM";
+	if(CompareKata(CKata,BJ)){
+	    return 62;
+	}
+
+	Kata BK;
+	BK.Length = 2;
+	BK.TabKata = " IO";
+	if(CompareKata(CKata,BK)){
+	    return 63;
+	}
+
+	Kata BL;
+	BL.Length = 4;
+	BL.TabKata = " COND";
+	if(CompareKata(CKata,BL)){
+	    return 64;
+	}
+
+	Kata BM;
+	BM.Length = 2;
+	BM.TabKata = " IF";
+	if(CompareKata(CKata,BM)){
+	    return 65;
+	}
+
+	Kata BN;
+	BN.Length = 10;
+	BN.TabKata = " ELSE_BLOCK";
+	if(CompareKata(CKata,BN)){
+	    return 66;
+	}
+
+	Kata BO;
+	BO.Length = 7;
+	BO.TabKata = " ELSE_IF";
+	if(CompareKata(CKata,BO)){
+	    return 67;
+	}
+
+	Kata BP;
+	BP.Length = 4;
+	BP.TabKata = " LOOP";
+	if(CompareKata(CKata,BP)){
+	    return 68;
+	}
+
+	Kata BQ;
+	BQ.Length = 3;
+	BQ.TabKata = " FOR";
+	if(CompareKata(CKata,BQ)){
+	    return 69;
+	}
+
+	Kata BR;
+	BR.Length = 9;
+	BR.TabKata = " TO_DOWNTO";
+	if(CompareKata(CKata,BR)){
+	    return 70;
+	}
+
+	Kata BS;
+	BS.Length = 4;
+	BS.TabKata = " STEP";
+	if(CompareKata(CKata,BS)){
+	    return 71;
+	}
+
+	Kata BT;
+	BT.Length = 6;
+	BT.TabKata = " ASSIGN";
+	if(CompareKata(CKata,BT)){
+	    return 72;
+	}
+
+	Kata BU;
+	BU.Length = 8;
+	BU.TabKata = " OP_ARITH";
+	if(CompareKata(CKata,BU)){
+	    return 73;
+	}
+
+	Kata BV;
+	BV.Length = 8;
+	BV.TabKata = " OP_LOGIC";
+	if(CompareKata(CKata,BV)){
+	    return 74;
+	}
+
+	Kata BW;
+	BW.Length = 9;
+	BW.TabKata = " SYM_ARITH";
+	if(CompareKata(CKata,BW)){
+	    return 75;
+	}
+
+	return 1;
 }
 
 void printkata(Kata C){
@@ -714,11 +715,9 @@ void init_token(char *filename)
         ADVKATA();
     }
 
-    /*
-    for(i = 0; i < maxindex; i++){
-        //printf("%d " ,list_of_input[i]);
-    }
-    */
+    /* Include $ (47) as last input */
+    list_of_input[maxindex++] = 46;
+
 }
 
 

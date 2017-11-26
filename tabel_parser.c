@@ -35074,6 +35074,4 @@ void init_table(PARSE_TABLE M){
 	M[235][74].action = '0';
 	M[235][74].gotos = 0;
 	M[235][75].gotos = '0';
-
-
 }

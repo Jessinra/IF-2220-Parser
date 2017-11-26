@@ -18,9 +18,9 @@ typedef struct {
 /* State Mesin Kata */
 extern boolean EndKata;
 extern Kata CKata;
-extern int list_of_input[9999];
+extern int list_of_input[99999];
 extern int maxindex;
-extern int baris[9999];
+extern int baris[99999];
 
 
 int IsSymbol();
