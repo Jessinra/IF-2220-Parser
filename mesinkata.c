@@ -24,6 +24,18 @@ int IsTitikKoma()
       return(CC == ';');
 }
 
+int IsKurung()
+//memeriksa apakah CC itu kurung atau bukan
+{
+	return(CC == '(' || CC == ')');
+}
+
+int IsNewline()
+//memeriksa apakah CC itu newline atau bukan
+{
+	return(CC =='\n');
+}
+
 int IsAngka()
 //memeriksa apakah CC itu angka
 {
@@ -75,8 +87,23 @@ void ADVKATA(){
         ADV();
         IgnoreBlank();
     }
+    else if(IsNewline()){
+    	IgnoreBlank();
+    }
     else if(IsAngka()){
         SalinAngka();
+    }
+    else if(IsKurung()){
+    	if(CC == '('){
+    		list_of_input[maxindex++] = 19;
+    		ADV();
+    		IgnoreBlank();
+    	}
+    	else if(CC == ')'){
+    		list_of_input[maxindex++] = 20;
+    		ADV();
+    		IgnoreBlank();
+    	}
     }
     else{
         SalinSimbol();
@@ -127,7 +154,7 @@ void SalinAngka(){
 void SalinKata(){
     CKata.TabKata = (char*)malloc(50);
     int i = 1;
-    while((CC!=MARK && CC!=BLANK && !IsSymbol() && !IsTitikKoma() && !IsAngka()) && i<=NMax) {
+    while((CC!=MARK && CC!=BLANK && !IsSymbol() && !IsTitikKoma() && !IsAngka() && !IsNewline()) && i<=NMax) {
         CKata.TabKata[i] = CC;
         i++;
         ADV();
@@ -735,8 +762,8 @@ void init_token(char *filename)
     while(!EndKata){
 
 
-        printkata(CKata);
-        printf("%d \n", list_of_input[maxindex-1]);
+        //printkata(CKata);
+        //printf("%d \n", list_of_input[maxindex-1]);
 
 
         ADVKATA();

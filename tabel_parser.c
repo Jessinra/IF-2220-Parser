@@ -73,7 +73,7 @@ void init_grammar(RULES G){
 	G[34].Grammar = 67 ; /*   COND   */
 	G[34].count = 3 ;
 	G[35].Grammar = 68 ; /*   IF   */
-	G[35].count = 5 ;
+	G[35].count = 4 ;
 	G[36].Grammar = 69 ; /*   ELSE_BLOCK   */
 	G[36].count = 2 ;
 	G[37].Grammar = 69 ; /*   ELSE_BLOCK   */

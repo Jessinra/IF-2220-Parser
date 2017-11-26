@@ -26,7 +26,8 @@ extern int baris[99999];
 int IsSymbol();
 int IsTitikKoma();
 int IsAngka();
-
+int IsKurung();
+int IsNewline();
 
 void IgnoreBlank();
 /* Mengabaikan satu atau beberapa BLANK
