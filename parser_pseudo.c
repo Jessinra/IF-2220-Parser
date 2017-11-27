@@ -10,9 +10,10 @@ int main (void){
     int current_input_index_on_list = 0;
     int row, col;
     TABLE table_value;
+    char filename[20];
 
+    printf("Input file name: "); scanf("%s", &filename);
 
-    char* filename = "coba.pas";
     printf("Compiling \"%s\"...\n\n", filename);
 
 
@@ -136,6 +137,7 @@ int main (void){
         }
     }
 
+    system("pause");
     return 0;
 }
 
