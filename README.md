@@ -2,6 +2,11 @@
 
 Folder contain source code for pascal's Pseudo parser (IF2220 Project 02)
 
+
+
+
+Contributors :
+
 Jessin D - IF ITB - 2017
 
 M Aditya - IF ITB - 2017
