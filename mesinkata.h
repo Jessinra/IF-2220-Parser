@@ -69,5 +69,7 @@ int KataToIndex(Kata K);
 /*mengubah Kata menajdi indeks di tabel parsing*/
 
 void init_token(char *filename);
+
+char* IndexToToken(int x);
 #endif
 

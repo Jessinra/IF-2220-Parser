@@ -118,7 +118,7 @@ void ADVKATA(){
 void SalinSimbol(){
     CKata.TabKata = (char*)malloc(50);
     int i = 1;
-    while((CC!=MARK && CC!=BLANK && IsSymbol() && !IsTitikKoma() && !IsAngka()) && i<=NMax) {
+    while((CC!=MARK && CC!=BLANK && IsSymbol() && !IsTitikKoma() && !IsAngka()) && !IsKurung() && !IsNewline() && i<=NMax) {
         CKata.TabKata[i] = CC;
         i++;
         ADV();
@@ -774,6 +774,247 @@ void init_token(char *filename)
 
 }
 
+char* IndexToToken(int x){
+	if(x == 1){
+		return("test");
+	}
+	if(x == 2){
+		return("integer");
+	}
+	if(x == 3){
+		return("real");
+	}
+	if(x == 4){
+		return("char");
+	}
+	if(x == 5){
+		return("begin");
+	}
+	if(x == 6){
+		return("end");
+	}
+	if(x == 7){
+		return(".");
+	}
+	if(x == 8){
+		return("program");
+	}
+	if(x == 9){
+		return(";");
+	}
+	if(x == 10){
+		return("var");
+	}
+	if(x == 11){
+		return(":");
+	}
+	if(x == 12){
+		return(",");
+	}
+	if(x == 13){
+		return("array");
+	}
+	if(x == 14){
+		return("of");
+	}
+	if(x == 15){
+		return("[");
+	}
+	if(x == 16){
+		return("..");
+	}
+	if(x == 17){
+		return("]");
+	}
+	if(x == 18){
+		return("input");
+	}
+	if(x == 19){
+		return("(");
+	}
+	if(x == 20){
+		return(")");
+	}
+	if(x == 21){
+		return("output");
+	}
+	if(x == 22){
+		return("if");
+	}
+	if(x == 23){
+		return("then");
+	}
+	if(x == 24){
+		return("else");
+	}
+	if(x == 25){
+		return("while");
+	}
+	if(x == 26){
+		return("do");
+	}
+	if(x == 27){
+		return("repeat");
+	}
+	if(x == 28){
+		return("until");
+	}
+	if(x == 29){
+		return("for");
+	}
+	if(x == 30){
+		return(":=");
+	}
+	if(x == 31){
+		return("to");
+	}
+	if(x == 32){
+		return("downto");
+	}
+	if(x == 33){
+		return("step");
+	}
+	if(x == 34){
+		return("not");
+	}
+	if(x == 35){
+		return("+");
+	}
+	if(x == 36){
+		return("-");
+	}
+	if(x == 37){
+		return("*");
+	}
+	if(x == 38){
+		return("/");
+	}
+	if(x == 39){
+		return("div");
+	}
+	if(x == 40){
+		return("mod");
+	}
+	if(x == 41){
+		return("<");
+	}
+	if(x == 42){
+		return(">");
+	}
+	if(x == 43){
+		return(">=");
+	}
+	if(x == 44){
+		return("<=");
+	}
+	if(x == 45){
+		return("=");
+	}
+	if(x == 46){
+		return("<>");
+	}
+	if(x == 47){
+		return("and");
+	}
+	if(x == 48){
+		return("or");
+	}
+	if(x == 49){
+		return("$");
+	}
+	if(x == 50){
+		return("S");
+	}
+	if(x == 51){
+		return("VAR_CONST");
+	}
+	if(x == 52){
+		return("VAR");
+	}
+	if(x == 53){
+		return("CONST");
+	}
+	if(x == 54){
+		return("VAR_TYPE");
+	}
+	if(x == 55){
+		return("NUM");
+	}
+	if(x == 56){
+		return("START");
+	}
+	if(x == 57){
+		return("PROGRAM_DEFINITION");
+	}
+	if(x == 58){
+		return("DICTIONARY");
+	}
+	if(x == 59){
+		return("VAR_DECLARE");
+	}
+	if(x == 60){
+		return("VAR_INIT");
+	}
+	if(x == 61){
+		return("ARRAY_DECLARE");
+	}
+	if(x == 62){
+		return("ARRAY_DIMENSION");
+	}
+	if(x == 63){
+		return("BLOCK");
+	}
+	if(x == 64){
+		return("BLOCKS");
+	}
+	if(x == 65){
+		return("ALGORITHM");
+	}
+	if(x == 66){
+		return("IO");
+	}
+	if(x == 67){
+		return("COND");
+	}
+	if(x == 68){
+		return("IF");
+	}
+	if(x == 69){
+		return("ELSE_BLOCK");
+	}
+	if(x == 70){
+		return("ELSE_IF");
+	}
+	if(x == 71){
+		return("LOOP");
+	}
+	if(x == 72){
+		return("FOR");
+	}
+	if(x == 73){
+		return("TO_DOWNTO");
+	}
+	if(x == 74){
+		return("STEP");
+	}
+	if(x == 75){
+		return("ASSIGN");
+	}
+	if(x == 76){
+		return("OP_ARITH");
+	}
+	if(x == 77){
+		return("OP_LOGIC");
+	}
+	if(x == 78){
+		return("SYM_ARITH");
+	}
+	if(x == 79){
+		return("SYM_LOGIC");
+	}
+
+	return ("''");
+}
 
 /*
 int main(){

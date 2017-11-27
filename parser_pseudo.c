@@ -20,6 +20,7 @@ int main (void){
     /* Initialize array of input (list_of_input)*/
     init_token(filename);
 
+
     //Print_token_list(list_of_input, 100);
 
     /* Initialize parse table */
@@ -46,7 +47,7 @@ int main (void){
     /* Repeat until break */
     while(1){
 
-        //PrintStack(main_stack);printf("\n");
+        Print_derivation(main_stack);
 
         /* Get information of current processed input , and current state */
         current_input = Token(list_of_input, current_input_index_on_list);
@@ -117,18 +118,19 @@ int main (void){
 
             /* Push to stack */
             Push(&main_stack, stack_input);
+
         }
 
         /* Accept */
         else if(Act(table_value) == 'a'){
 
-            printf("Compile success ! \\ (^.^)/ \n\n");
+            printf("\n\n\n\nCompile success ! \\ (^.^)/ \n\n");
             break;
         }
 
         /* Null in parse table */
         else {
-            printf("Compile failed...\n");
+            printf("\n\n\n\nCompile failed...\n");
             Write_error_message(current_input, current_input_index_on_list);
             break;
         }
@@ -156,6 +158,18 @@ void Print_token_list(Array_token list_of_input, int amount){
     for (i = 0; i <= amount; i++){
         printf("token %d : %d, at row %d\n",i+1,list_of_input[i],baris[i]);
     }
+}
+
+
+void Print_derivation(Stack S){
+    /* Function to print stack */
+
+    int i;
+
+    for (i = Top(S); i > 0; i--){
+        printf("%s : %d, ",IndexToToken(SToken(S.T[i])), SState(S.T[i]));
+    }
+    printf("\n\n");
 }
 
 
@@ -214,6 +228,6 @@ void PrintStack(Stack S){
             printf("<top>");
         }
 
-        printf("\n");
+        printf("\n\n");
     }
 }

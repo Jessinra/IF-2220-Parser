@@ -23,5 +23,5 @@ J:= j-1;
 Until j = 0;
 End;
 End;
-End.~
-~~~~~~~~
+End.
+~
