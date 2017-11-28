@@ -22,11 +22,11 @@
 
 /* =================     Type definition      =================*/
 
-typedef int Token;                               /* <<<<< supposed to be int */
+typedef int Token;                               
 
 typedef struct{
 	int count;
-	int Grammar;                              /* <<<<< supposed to be int */
+	int Grammar;                            
 } GRAMMAR;
 #define Grm(R) (R).Grammar
 #define Len(R) (R).count
@@ -52,10 +52,9 @@ typedef GRAMMAR RULES[Max_rules+1];
 #define GRAMMAR(T, i) (T)[(i)]
 
 
-
 typedef struct {
     int state;
-    int token;                             /* <<<<< supposed to be int */
+    int token;                           
 } Stack_elmt;
 #define SState(S) (S).state
 #define SToken(S) (S).token
@@ -70,25 +69,37 @@ typedef struct Stack{
 
 
 void init_table(PARSE_TABLE M);
+/* Initialize parse table */
 
 void init_grammar(RULES G);
+/* Initialize grammar table */
 
 void Write_error_message(Token current_input,int current_index);
+/* Display error message */
 
 void Print_token_list(Array_token list_of_input, int amount);
+/* Display list of input */
+
+void Print_derivation(Stack S);
+/* Display parsing derivation */
+
 
 
 /* =====================         ADT STACK         ===================== */
 
 void CreateEmpty (Stack *S);
+ /* Create empty stack */
 
 boolean IsEmpty (Stack S);
+/* Function to check if stack is emtpy */
 
 void Push (Stack * S, Stack_elmt X);
+/* Function to add element to stack */
 
 void Pop (Stack * S, Stack_elmt* X);
+/* Function to remove element from stack */
 
 void PrintStack(Stack S);
-
+/* Function to print stack */
 
 #endif

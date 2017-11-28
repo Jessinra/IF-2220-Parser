@@ -13,48 +13,49 @@ int bar = 1;
 
 
 int IsSymbol()
-//memeriksa apakah CC itu simbol atau bukan
+/* Check if CC is symbol */
 {
-      return((CC > 90 || CC < 65) && (CC < 97 || CC > 122) && CC != BLANK);
+    return((CC > 90 || CC < 65) && (CC < 97 || CC > 122) && CC != BLANK);
 }
 
 int IsTitikKoma()
-//memeriksa apakah CC itu titik koma atau bukan
+/* Check if CC is semi-colon */
 {
-      return(CC == ';');
+    return(CC == ';');
 }
 
 int IsKurung()
-//memeriksa apakah CC itu kurung atau bukan
+/* Check if CC is bracket */
 {
 	return(CC == '(' || CC == ')');
 }
 
 int IsNewline()
-//memeriksa apakah CC itu newline atau bukan
+/* Check if CC is newline */
 {
 	return(CC =='\n');
 }
 
 int IsAngka()
-//memeriksa apakah CC itu angka
+/* Check if CC is number */
 {
-  //printf("masuk");
-      return((CC > 47 && CC < 58));
+    return((CC > 47 && CC < 58));
 }
 
 void IgnoreBlank(){
+	/* Skip whitespace */
+
     while(CC==BLANK || CC=='\n' || CC=='\t'){
-      if(CC == '\n'){
-        bar++;
-      }
-        ADV();
+		if(CC == '\n'){
+			bar++;
+		}
+		ADV();
     }
 }
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK atau CC = MARK */
+
 void STARTKATA(char *filename){
+	/* Start parse text */
+
     START(filename);
     IgnoreBlank();
     if(CC == MARK){
@@ -69,12 +70,11 @@ void STARTKATA(char *filename){
         }
     }
 }
-/* I.S. : CC sembarang
-   F.S. : EndKata = true, dan CC = MARK;
-          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
-          CC karakter pertama sesudah karakter terakhir kata */
+
 
 void ADVKATA(){
+	/* Read next word */
+
     IgnoreBlank();
     if(CC == MARK){
         EndKata = true;
@@ -109,13 +109,10 @@ void ADVKATA(){
         SalinSimbol();
     }
 }
-/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
-   F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
-          CC adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika CC = MARK, EndKata = true.
-   Proses : Akuisisi kata menggunakan procedure SalinKata */
 
 void SalinSimbol(){
+	/* Copy symbol */
+
     CKata.TabKata = (char*)malloc(50);
     int i = 1;
     while((CC!=MARK && CC!=BLANK && IsSymbol() && !IsTitikKoma() && !IsAngka()) && !IsKurung() && !IsNewline() && i<=NMax) {
@@ -127,13 +124,14 @@ void SalinSimbol(){
         EndKata = true;
     }
     CKata.Length = i-1;
-    //printkata(CKata);
     baris[maxindex] = bar;
     list_of_input[maxindex++] = KataToIndex(CKata);
     IgnoreBlank();
 }
 
 void SalinAngka(){
+	/* Copy number */
+
     CKata.TabKata = (char*)malloc(50);
     int i = 1;
     while((CC!=MARK && CC!=BLANK && IsSymbol() && IsAngka()) && i<=NMax) {
@@ -145,13 +143,14 @@ void SalinAngka(){
         EndKata = true;
     }
     CKata.Length = i-1;
-    //printkata(CKata);
     baris[maxindex] = bar;
     list_of_input[maxindex++] = KataToIndex(CKata);
     IgnoreBlank();
 }
 
 void SalinKata(){
+	/* Copy words */
+
     CKata.TabKata = (char*)malloc(50);
     int i = 1;
     while((CC!=MARK && CC!=BLANK && !IsSymbol() && !IsTitikKoma() && !IsAngka() && !IsNewline()) && i<=NMax) {
@@ -167,17 +166,10 @@ void SalinKata(){
     list_of_input[maxindex++] = KataToIndex(CKata);
     IgnoreBlank();
 }
-/* Mengakuisisi kata, menyimpan dalam CKata
-   I.S. : CC adalah karakter pertama dari kata
-   F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata " dipotong"  */
+
 
 int CompareKata(Kata Kata1, Kata Kata2)
-/*membandingkan apakah kata 1 == kata 2
- *jika iya mengembalikan 1 jika tidak mengembalikan 0
- */
+	/* Compare words */
 {
     int i;
 
@@ -193,7 +185,7 @@ int CompareKata(Kata Kata1, Kata Kata2)
 }
 
 int KataToIndex(Kata CKata)
-/*mengubah Kata menajdi indeks di tabel parsing*/
+/* Change word to token (int) */
 {
 	Kata B;
 	B.Length = 7;
@@ -745,6 +737,8 @@ int KataToIndex(Kata CKata)
 }
 
 void printkata(Kata C){
+	/* Show word */
+
     int i;
 
     for( i = 1; i <= C.Length; i++){
@@ -754,27 +748,24 @@ void printkata(Kata C){
 }
 
 void init_token(char *filename)
-/*mengisi array token dengan program yang sudah diubah menjadi token*/
+	/* parse external file contain strings and fill into array as tokens */
 {
     int i;
 
     STARTKATA(filename);
     while(!EndKata){
 
-
-        //printkata(CKata);
-        //printf("%d \n", list_of_input[maxindex-1]);
-
-
         ADVKATA();
     }
 
-    /* Include $ (47) as last input */
+    /* Include $ (49) as last input */
     list_of_input[maxindex++] = 49;
 
 }
 
 char* IndexToToken(int x){
+	/* Change token (int) to string */
+
 	if(x == 1){
 		return("test");
 	}
@@ -1015,17 +1006,3 @@ char* IndexToToken(int x){
 
 	return ("''");
 }
-
-/*
-int main(){
-    init_token("coba.pas");
-    printf("\n");
-    int i;
-    for(i = 0 ; i < 100; i++){
-        printf("%d ",baris[i]);
-
-        // ';' will be 0
-
-    }
-}
-*/

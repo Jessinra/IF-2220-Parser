@@ -11,7 +11,7 @@
 #define BLANK ' '
 
 typedef struct {
-	char *TabKata; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
+	char *TabKata; 
     int Length;
 } Kata;
 
@@ -24,52 +24,52 @@ extern int baris[99999];
 
 
 int IsSymbol();
+/* Check if CC is symbol */
+
 int IsTitikKoma();
+/* Check if CC is semi-colon */
+
 int IsAngka();
+/* Check if CC is bracket */
+
 int IsKurung();
+/* Check if CC is newline */
+
 int IsNewline();
+/* Check if CC is number */
 
 void IgnoreBlank();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK atau CC = MARK */
+/* Skip whitespace */
 
 void STARTKATA();
-/* I.S. : CC sembarang
-   F.S. : EndKata = true, dan CC = MARK;
-          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
-          CC karakter pertama sesudah karakter terakhir kata */
+/* Start parse text */
 
 void ADVKATA();
-/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
-   F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
-          CC adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika CC = MARK, EndKata = true.
-   Proses : Akuisisi kata menggunakan procedure SalinKata */
-
-
+/* Read next word */
 
 void SalinSimbol();
+/* Copy symbol */
+
 void SalinAngka();
+/* Copy number */
 
 void SalinKata();
-/* Mengakuisisi kata, menyimpan dalam CKata
-   I.S. : CC adalah karakter pertama dari kata
-   F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+/* Copy words */
 
 int CompareKata(Kata Kata1, Kata Kata2);
-/*membandingkan apakah kata 1 == kata 2
- *jika iya mengembalikan 1 jika tidak mengembalikan 0
- */
+/* Compare words */
 
 int KataToIndex(Kata K);
-/*mengubah Kata menajdi indeks di tabel parsing*/
+/* Change word to token (int) */
+
+void printkata(Kata C);
+  /* Show word */
 
 void init_token(char *filename);
+/* parse external file contain strings and fill into array as tokens */
 
 char* IndexToToken(int x);
+/* Change token (int) to string */
+
 #endif
 

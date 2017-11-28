@@ -7,7 +7,7 @@
 #include "boolean.h"
 
 #define MARK '~'
-/* State Mesin */
+
 extern char CC;
 extern boolean EOP;
 
@@ -28,4 +28,5 @@ void ADV();
 
 char uncapitalize(char c);
 /*membuat semua karakter yang dibaca menjadi bukan kapital*/
+
 #endif

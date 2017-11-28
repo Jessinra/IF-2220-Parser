@@ -10,40 +10,35 @@ int main (void){
     int current_input_index_on_list = 0;
     int row, col;
     TABLE table_value;
-    char filename[20];
+    char filename[30];
 
+
+    /* Getting name of file which will be parsed */
     printf("Input file name: "); scanf("%s", &filename);
-
     printf("Compiling \"%s\"...\n\n", filename);
-
 
 
     /* Initialize array of input (list_of_input)*/
     init_token(filename);
 
-
-    //Print_token_list(list_of_input, 100);
-
     /* Initialize parse table */
     PARSE_TABLE parse_table;
     init_table(parse_table);
 
-
     /* Initialize rules */
     RULES list_of_rules;
     init_grammar(list_of_rules);
-
 
     /* Initialize stack */
     Stack main_stack;
     CreateEmpty(&main_stack);
     Stack_elmt stack_input, stack_output;
 
-
     /* Bottom of stack */
     SState(stack_input) = 0;
     SToken(stack_input) = 0;
     Push(&main_stack, stack_input);
+
 
     /* Repeat until break */
     while(1){
@@ -54,15 +49,10 @@ int main (void){
         current_input = Token(list_of_input, current_input_index_on_list);
         current_state = SState(InfoTop(main_stack));
 
-        //printf("current input %d\n",current_input);
-        //printf("current state %d\n\n",current_state);
-
         /* Evaluate current input and current_state in table */
         row = current_state;
         col = current_input;
         table_value = Parse_elmt(parse_table, row, col);
-
-        //printf("row : %d, col : %d\n\n", row, col);
 
 
         /* Shift */
@@ -86,8 +76,6 @@ int main (void){
             int LHS = Grm(GRAMMAR(list_of_rules, State(table_value)));
             int RHS_length = Len(GRAMMAR(list_of_rules, State(table_value)));
 
-            //printf("using LHS : %d, RHS len : %d\n\n",LHS,RHS_length);
-
             /* Popping stack (as one element) ~ */
             int j;
             for(j = 1; j <= (RHS_length); j++){
@@ -97,13 +85,11 @@ int main (void){
 
             /* Get current state */
             current_state = SState(InfoTop(main_stack));
-            //printf("current state %d\n\n",current_state);printf("top stack : %d\n\n",Top(main_stack));
-
+            
             /* Evaluate LHS and current_state in table */
             row = current_state;
             col = LHS;
             table_value = Parse_elmt(parse_table, row, col);
-            //printf("row : %d, col : %d\n\n",row,col);
 
             /* Check if evaluation failed */
             if(Act(table_value) == '0'){
@@ -119,7 +105,6 @@ int main (void){
 
             /* Push to stack */
             Push(&main_stack, stack_input);
-
         }
 
         /* Accept */
@@ -141,7 +126,12 @@ int main (void){
     return 0;
 }
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~       Additional function             ~~~~~~~~~~~~~~~~~~ */
+
+
 void Write_error_message(Token current_input,int current_index){
+    /* Display error message */
 
     if (current_input == 9){
 
@@ -155,6 +145,7 @@ void Write_error_message(Token current_input,int current_index){
 }
 
 void Print_token_list(Array_token list_of_input, int amount){
+    /* Display list of input */
 
     int i;
     for (i = 0; i <= amount; i++){
@@ -164,7 +155,7 @@ void Print_token_list(Array_token list_of_input, int amount){
 
 
 void Print_derivation(Stack S){
-    /* Function to print stack */
+    /* Display parsing derivation */
 
     int i;
 
@@ -175,7 +166,7 @@ void Print_derivation(Stack S){
 }
 
 
-/* ==============       ADT STACK        ================= */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~       Stack's  ADT            ~~~~~~~~~~~~~~~~~~ */
 
 void CreateEmpty (Stack *S){
     /* Create empty stack */
